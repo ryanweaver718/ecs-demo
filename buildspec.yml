@@ -3,11 +3,12 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - $(aws ecr get-login --no-include-email --region us-east-1)
+      - $(aws ecr get-login-password --region us-east-1 | docker login --username AWS
+        --password-stdin 472848567057.dkr.ecr.us-east-1.amazonaws.com)
   build:
     commands:
-      - docker build -t youtube:latest .
-      - docker tag <IMAGE_NAME> <ECR_URL>
+      - docker build -t test:latest .
+      - docker tag test:latest 472848567057.dkr.ecr.us-east-1.amazonaws.com/ryantest
   post_build:
     commands:
       - docker push <ECR_URL>
