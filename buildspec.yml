@@ -13,7 +13,7 @@ phases:
   post_build:
     commands:
       - docker push 472848567057.dkr.ecr.us-east-1.amazonaws.com/ryantest
-      - printf '[{"name":"ryanstest-taskdef:1","imageUri":"%s"}]'
+      - printf '[{"name":"ryanstest-taskdef","imageUri":"%s"}]'
         472848567057.dkr.ecr.us-east-1.amazonaws.com/ryantest > imagedefinitions.json
 artifacts:
   files: imagedefinitions.json
